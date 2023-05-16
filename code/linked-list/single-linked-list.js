@@ -1,0 +1,280 @@
+/**
+ * 单链表
+ */
+function SingleLinkedList() {
+    /**
+     * 结点定义
+     */
+    const Node = function (element) {
+        // 结点内容
+        this.element = element
+        // 结点指针
+        this.next = null
+    }
+
+    // 链表长度
+    let length = 0
+    // 链表头结点
+    let head = null
+
+    /**
+     * 查找结点
+     * @description 查找并返回给定结点element的索引值
+     * @param {*} element 
+     * @returns 
+     */
+    this.indexOf = function (element) {
+        let cur = head,
+            index = 0
+        while (cur) {
+            if (cur.element === element) {
+                return index
+            }
+            index++
+            cur = cur.next
+        }
+        return -1
+    }
+
+    /**
+     * 追加结点
+     * @description 给链表添加结点
+     * @param {*} element 
+     * @returns 
+     */
+    this.append = function (element) {
+        // 转化为结点结构
+        let node = new Node(element),
+            cur
+        if (!head) {
+            head = node
+        } else {
+            cur = head
+            while (cur.next) {
+                cur = cur.next
+            }
+            cur.next = node
+        }
+        length++
+        return true
+    }
+
+    /**
+     * 遍历结点
+     * @returns 
+     */
+    this.show = function () {
+        let cur = head,
+            res = []
+        while (cur) {
+            res.push(cur.element)
+            cur = cur.next
+        }
+        return res
+    }
+
+    /**
+     * 获取链表长度
+     * @returns 
+     */
+    this.size = function () {
+        return length
+    }
+
+    /**
+     * 获取头结点
+     * @returns 
+     */
+    this.getHead = function () {
+        return head;
+    }
+
+    /**
+     * 获取尾结点
+     * @returns 
+     */
+    this.getTail = function () {
+        let cur = head
+        while (cur) {
+            cur = cur.next
+        }
+        return cur
+    }
+
+    /**
+     * 判断链表是否为空
+     * @returns
+     */
+    this.isEmpty = function () {
+        return length === 0
+    }
+
+    /**
+     * 插入结点
+     * 根据指定的索引插入结点
+     * @param {*} index 
+     * @param {*} element 
+     * @returns 
+     */
+    this.insert = function (index, element) {
+        let cur = head,
+            pre, num = 0,
+            node = new Node(element)
+        // 检查index
+        if (index > length - 1 || index < 0) {
+            console.error('index error')
+            return false
+        }
+
+        if (index === 0) {
+            node.next = cur
+            head = node
+        } else {
+            while (cur) {
+                if (num === index) {
+                    node.next = cur
+                    pre.next = node
+                    length++
+                    return true
+                }
+                num++
+                pre = cur
+                cur = cur.next
+            }
+        }
+        length++
+        return true
+    }
+
+    /**
+     * 删除尾结点
+     * @returns 
+     */
+    this.removeTail = function () {
+        if (!head) {
+            console.error('head is null')
+            return false
+        }
+        let cur = head,
+            pre = null,
+            num = 0
+        while (cur) {
+            if (!cur.next) {
+                if (num === 0) {
+                    head = null
+                } else {
+                    pre.next = null
+                }
+                length--
+                return true
+            }
+            num++
+            pre = cur
+            cur = cur.next
+        }
+        length--
+        return true
+    }
+
+    /**
+     * 删除指定的元素
+     * 根据传入的元素删除链表中的元素
+     * @param {*} element 
+     * @returns 
+     */
+    this.removeByElement = function (element) {
+        if (!head) {
+            console.error('head is null')
+            return false
+        }
+        let cur = head,
+            pre = null
+        if (head.element === element) {
+            head = cur.next
+            length--
+            return true
+        } else {
+            while (cur) {
+                if (cur.element === element) {
+                    pre.next = cur.next
+                    length--
+                    return true
+                }
+                pre = cur
+                cur = cur.next
+            }
+        }
+        return false
+    }
+
+    /**
+     * 删除指定的索引的元素
+     * 根据传入的索引删除链表中的元素
+     * @param {*} index 
+     * @returns 
+     */
+    this.removeByIndex = function (index) {
+        // 检查index
+        if (index > length - 1 || index < 0) {
+            console.error('index error')
+            return false
+        }
+        let cur = head,
+            pre = null,
+            num = 0
+        if (index === 0) {
+            head = cur.next
+        } else {
+            while (cur) {
+                if (num === index) {
+                    pre.next = cur.next
+                    length--
+                    return true
+                }
+                num++
+                pre = cur
+                cur = cur.next
+            }
+        }
+        length--
+        return true
+    }
+
+}
+
+/**
+ * 测试
+ */
+let singleLinkedList = new SingleLinkedList()
+
+// 在链表后面追加元素
+singleLinkedList.append('1')
+singleLinkedList.append('2')
+singleLinkedList.append('3')
+
+// 遍历链表
+singleLinkedList.show()
+
+// 判断链表是否为空
+singleLinkedList.isEmpty()
+
+// 获取链表的长度
+singleLinkedList.size()
+
+// 获取头结点
+singleLinkedList.getHead()
+
+// 获取尾结点
+singleLinkedList.getTail()
+
+// 根据索引查找链表的元素
+singleLinkedList.indexOf(2)
+
+// 删除尾结点
+singleLinkedList.removeTail()
+
+// 根据索引值删除指定的元素
+singleLinkedList.removeByIndex(2)
+
+// 根据传入的元素删除指定的元素
+singleLinkedList.removeByElement('1')
