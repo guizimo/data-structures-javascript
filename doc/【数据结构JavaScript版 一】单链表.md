@@ -1,4 +1,4 @@
-# 【数据结构JavaScript版】其一 单链表
+# 【数据结构JavaScript版 一】单链表
 
 ## 说明
 
