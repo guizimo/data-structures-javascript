@@ -20,8 +20,8 @@ function SingleLinkedList() {
     /**
      * 查找结点
      * @description 查找并返回给定结点element的索引值
-     * @param {*} element 
-     * @returns 
+     * @param {*} element
+     * @returns
      */
     this.indexOf = function (element) {
         let cur = head,
@@ -39,13 +39,13 @@ function SingleLinkedList() {
     /**
      * 追加结点
      * @description 给链表添加结点
-     * @param {*} element 
-     * @returns 
+     * @param {*} element
+     * @returns
      */
     this.append = function (element) {
         // 转化为结点结构
-        let node = new Node(element),
-            cur
+        let node = new Node(element)
+        let cur = null
         if (!head) {
             head = node
         } else {
@@ -61,7 +61,7 @@ function SingleLinkedList() {
 
     /**
      * 遍历结点
-     * @returns 
+     * @returns
      */
     this.show = function () {
         let cur = head,
@@ -75,7 +75,7 @@ function SingleLinkedList() {
 
     /**
      * 获取链表长度
-     * @returns 
+     * @returns
      */
     this.size = function () {
         return length
@@ -83,7 +83,7 @@ function SingleLinkedList() {
 
     /**
      * 获取头结点
-     * @returns 
+     * @returns
      */
     this.getHead = function () {
         return head;
@@ -91,7 +91,7 @@ function SingleLinkedList() {
 
     /**
      * 获取尾结点
-     * @returns 
+     * @returns
      */
     this.getTail = function () {
         let cur = head
@@ -112,9 +112,9 @@ function SingleLinkedList() {
     /**
      * 插入结点
      * 根据指定的索引插入结点
-     * @param {*} index 
-     * @param {*} element 
-     * @returns 
+     * @param {*} index
+     * @param {*} element
+     * @returns
      */
     this.insert = function (index, element) {
         let cur = head,
@@ -148,7 +148,7 @@ function SingleLinkedList() {
 
     /**
      * 删除尾结点
-     * @returns 
+     * @returns
      */
     this.removeTail = function () {
         if (!head) {
@@ -179,8 +179,8 @@ function SingleLinkedList() {
     /**
      * 删除指定的元素
      * 根据传入的元素删除链表中的元素
-     * @param {*} element 
-     * @returns 
+     * @param {*} element
+     * @returns
      */
     this.removeByElement = function (element) {
         if (!head) {
@@ -210,8 +210,8 @@ function SingleLinkedList() {
     /**
      * 删除指定的索引的元素
      * 根据传入的索引删除链表中的元素
-     * @param {*} index 
-     * @returns 
+     * @param {*} index
+     * @returns
      */
     this.removeByIndex = function (index) {
         // 检查index
@@ -242,39 +242,3 @@ function SingleLinkedList() {
 
 }
 
-/**
- * 测试
- */
-let singleLinkedList = new SingleLinkedList()
-
-// 在链表后面追加元素
-singleLinkedList.append('1')
-singleLinkedList.append('2')
-singleLinkedList.append('3')
-
-// 遍历链表
-singleLinkedList.show()
-
-// 判断链表是否为空
-singleLinkedList.isEmpty()
-
-// 获取链表的长度
-singleLinkedList.size()
-
-// 获取头结点
-singleLinkedList.getHead()
-
-// 获取尾结点
-singleLinkedList.getTail()
-
-// 根据索引查找链表的元素
-singleLinkedList.indexOf(2)
-
-// 删除尾结点
-singleLinkedList.removeTail()
-
-// 根据索引值删除指定的元素
-singleLinkedList.removeByIndex(2)
-
-// 根据传入的元素删除指定的元素
-singleLinkedList.removeByElement('1')

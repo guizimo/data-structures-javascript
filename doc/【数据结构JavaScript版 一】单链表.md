@@ -14,58 +14,111 @@
 
 ## 1、什么是单链表
 
-单链表是一种**链式存取的数据结构**，用一组地址任意的存储单元存放线性表中的数据元素。
+单链表是一种**链式存取的数据结构**，用一组地址任意的存储单元存放线性表中的数据元素。链表中的数据是以**节点**来表示的。
 
-链表中的数据是以结点来表示的。
+每个节点的构成：元素(数据元素的映象) + 指针(指示后继元素存储位置)，元素就是存储数据的存储单元，指针就是连接每个节点的地址数据。
 
-每个结点的构成：元素(数据元素的映象) + 指针(指示后继元素存储位置)，元素就是存储数据的存储单元，指针就是连接每个结点的地址数据。
-
-## 2、结点的结构
+## 2、节点的结构
 
 首先来看一张图，会比较直观。
 
-![结点结构](https://guizimo.oss-cn-shanghai.aliyuncs.com/img/image-20220402231702469.png)
+![节点结构](https://guizimo.oss-cn-shanghai.aliyuncs.com/img/image-20220402231702469.png)
 
-链表通过每个节点的链域将线性表的n个结点按其逻辑顺序链接在一起，每个结点只有一个链域的链表被称为单链表（Single Linked List）。
+链表通过每个节点的链域将线性表的n个节点按其逻辑顺序链接在一起，每个节点只有一个链域的链表被称为单链表（Single Linked List）。
 
-## 单链表的头指针head和终端结点
+## 3、单链表的头指针head和终端节点
 
-单链表中每个结点的存储地址是存放在其前趋结点next域中，而开始结点无前趋，故应设头指针head指向开始结点。
+单链表中每个节点的存储地址是存放在其前趋节点next域中，而开始节点无前趋，故应设头指针head指向开始节点。
 
-![单链表的头指针head和终端结点](https://guizimo.oss-cn-shanghai.aliyuncs.com/img/image-20220402232222020.png)
+![单链表的头指针head和终端节点](https://guizimo.oss-cn-shanghai.aliyuncs.com/img/image-20220402232222020.png)
 
 链表由头指针唯一确定，单链表可以用头指针的名字来命名。
 
-终端结点无后继，故终端结点的指针域为空，即NULL。
+终端节点无后继，故终端节点的指针域为空，即NULL。
 
-## 构造一个单链表的数据结构
+## 4、单链表的优点和缺点
+
+- **优点**：插入和删除节点的操作非常高效，时间复杂度为O(1)，同时可以动态地添加或删除节点。
+- **缺点**：访问单链表中的任意节点时，需要从头节点开始遍历整个链表，时间复杂度为O(n)，因此不适用于随机访问。
+
+下面是一个示例单链表的结构：
+
+```
++---+    +---+    +---+    +---+    +----+
+| 1 | -> | 2 | -> | 3 | -> | 4 | -> |null|
++---+    +---+    +---+    +---+    +----+
+```
+
+在上面的示例中，每个节点都包含了一个数据元素和一个指向下一个节点的指针。从第一个节点开始，我们可以通过指针依次访问链表中的每个节点，直到最后一个节点。
+
+单链表的实现通常使用一个头节点（Head Node），头节点不包含任何数据，只是用来标识链表的起始位置。在插入和删除节点时，我们通常需要从头节点开始遍历链表，找到要操作的节点。
+
+## 5、构造一个单链表的数据结构
 
 明白了单链表的数据结构之后，来尝试构造一个单链表。
 
-### 结点
+### 思路
+
+1、定义一个节点的数据结构
+
+2、实现添加节点操作
+
+3、实现获取头节点操作
+
+4、实现获取链表的长度
+
+5、实现遍历节点的操作
+
+6、实现获取链表长度的操作
+
+7、实现查找节点的操作
+
+8、实现获取尾节点的操作
+
+9、实现删除节点的操作
+
+### 节点
 
 ```js
-/*节点定义*/
-const Node = function(element){
-  //存放节点内容
-	this.element = daelementta; 
-  //指针
-	this.next = null; 
+ /**
+ * 结点定义
+ */
+const Node = function (element) {
+    // 结点内容
+    this.element = element
+    // 结点指针
+    this.next = null
 }
+
+// 链表长度
+let length = 0
+// 链表头结点
+let head = null
 ```
 
-### 添加结点
+### 添加节点
+
+**思路**
+
+1、找到头节点
+
+2、通过头节点遍历到尾节点
+
+3、插入新的节点
+
+**代码**
 
 ```js
 /**
  * 追加结点
  * @description 给链表添加结点
- * @param {*} element 
- * @returns 
+ * @param {*} element
+ * @returns
  */
-this.append = function(element) {
+this.append = function (element) {
     // 转化为结点结构
-    let node = new Node(element), cur
+    let node = new Node(element)
+    let cur = null
     if (!head) {
         head = node
     } else {
@@ -80,11 +133,11 @@ this.append = function(element) {
 }
 ```
 
-### 获取头结点
+### 获取头节点
 
 ```js
 /**
- * 获取头结点
+ * 获取头节点
  * @returns 
  */
 this.getHead = function(){
@@ -104,11 +157,11 @@ this.size = function() {
 }
 ```
 
-### 遍历结点
+### 遍历节点
 
 ```js
 /**
- * 遍历结点
+ * 遍历节点
  * @returns 
  */
 this.show = function() {
@@ -123,12 +176,12 @@ this.show = function() {
 
 ### 查找节点
 
-查找并返回给定结点element的索引值
+查找并返回给定节点element的索引值
 
 ```js
 /**
- * 查找结点
- * @description 查找并返回给定结点element的索引值
+ * 查找节点
+ * @description 查找并返回给定节点element的索引值
  * @param {*} element 
  * @returns 
  */
@@ -145,9 +198,7 @@ this.indexOf = function(element) {
 }
 ```
 
-### 获取尾结点
-
-获取尾结点
+### 获取尾节点
 
 ```js
 this.getTail = function() {
@@ -162,17 +213,163 @@ this.getTail = function() {
 }
 ```
 
-### 结点
+### 插入节点
+
+```javascript
+/**
+ * 插入结点
+ * 根据指定的索引插入结点
+ * @param {*} index
+ * @param {*} element
+ * @returns
+ */
+this.insert = function (index, element) {
+    let cur = head,
+        pre, num = 0,
+        node = new Node(element)
+    // 检查index
+    if (index > length - 1 || index < 0) {
+        console.error('index error')
+        return false
+    }
+    if (index === 0) {
+        node.next = cur
+        head = node
+    } else {
+        while (cur) {
+            if (num === index) {
+                node.next = cur
+                pre.next = node
+                length++
+                return true
+            }
+            num++
+            pre = cur
+            cur = cur.next
+        }
+    }
+    length++
+    return true
+}
+```
+
+### 删除尾节点
+
+```javascript
+/**
+ * 删除尾结点
+ * @returns
+ */
+this.removeTail = function () {
+    if (!head) {
+        console.error('head is null')
+        return false
+    }
+    let cur = head,
+        pre = null,
+        num = 0
+    while (cur) {
+        if (!cur.next) {
+            if (num === 0) {
+                head = null
+            } else {
+                pre.next = null
+            }
+            length--
+            return true
+        }
+        num++
+        pre = cur
+        cur = cur.next
+    }
+    length--
+    return true
+}
+```
+
+### 删除指定的元素
+
+```javascript
+/**
+ * 删除指定的元素
+ * 根据传入的元素删除链表中的元素
+ * @param {*} element
+ * @returns
+ */
+this.removeByElement = function (element) {
+    if (!head) {
+        console.error('head is null')
+        return false
+    }
+    let cur = head,
+        pre = null
+    if (head.element === element) {
+        head = cur.next
+        length--
+        return true
+    } else {
+        while (cur) {
+            if (cur.element === element) {
+                pre.next = cur.next
+                length--
+                return true
+            }
+            pre = cur
+            cur = cur.next
+        }
+    }
+    return false
+}
+```
+
+### 删除指定的索引的元素
+
+```javascript
+/**
+ * 删除指定的索引的元素
+ * 根据传入的索引删除链表中的元素
+ * @param {*} index
+ * @returns
+ */
+this.removeByIndex = function (index) {
+    // 检查index
+    if (index > length - 1 || index < 0) {
+        console.error('index error')
+        return false
+    }
+    let cur = head,
+        pre = null,
+        num = 0
+    if (index === 0) {
+        head = cur.next
+    } else {
+        while (cur) {
+            if (num === index) {
+                pre.next = cur.next
+                length--
+                return true
+            }
+            num++
+            pre = cur
+            cur = cur.next
+        }
+    }
+    length--
+    return true
+}
+```
+
+### 完整代码
 
 
 
 
 
-## 单链表必刷题库
+## 7、单链表必刷题库
 
 1、单链表用**双指针**解法
 
-2、**虚拟头结点**`dummy` 节点
+2、**虚拟头节点**`dummy` 节点
 
 3、归并排序
 
@@ -195,13 +392,13 @@ this.getTail = function() {
 
 **思路**
 
-1、创建一个虚拟头结点dummy，一个移动指针，初始指向dummy结点
+1、创建一个虚拟头节点dummy，一个移动指针，初始指向dummy节点
 
-2、 while 循环每次比较 `l1` 和 `l2` 的大小，把较小的结点接到结果链表p上
+2、 while 循环每次比较 `l1` 和 `l2` 的大小，把较小的节点接到结果链表p上
 
 3、后续会剩下一个未处理的，需要判断
 
-4、返回虚拟头结点的下一个结点
+4、返回虚拟头节点的下一个节点
 
 **代码**
 
@@ -219,11 +416,11 @@ this.getTail = function() {
  * @return {ListNode}
  */
 var mergeTwoLists = function(list1, list2) {
-    // 创建虚拟头结点
+    // 创建虚拟头节点
     const dummy = new ListNode(-1)
     // 移动指针
     let p = dummy
-    // 循环，将值较小的的结点接到 p 指针
+    // 循环，将值较小的的节点接到 p 指针
     while(list1 !== null && list2 !== null) {
         if (list1.val > list2.val) {
             p.next = list2
@@ -237,7 +434,7 @@ var mergeTwoLists = function(list1, list2) {
     // 处理最后一个未处理的
     if (list1 !== null) p.next = list1
     if (list2 !== null) p.next = list2
-    // 放回虚拟头结点的下一个位置，也就是头结点的位置
+    // 放回虚拟头节点的下一个位置，也就是头节点的位置
     return dummy.next
 };
 ```
@@ -305,9 +502,9 @@ function mergeList(list, start, end) {
 
 // 合并两个升序链表
 function merge(list1, list2) {
-    // 虚拟头结点
+    // 虚拟头节点
     let dummy = new ListNode(0)
-    // 当前结点
+    // 当前节点
     let temp = dummy
     while(list1 && list2) {
         if (list1.val <= list2.val) {
@@ -325,11 +522,11 @@ function merge(list1, list2) {
 }
 ```
 
-### [19. 删除链表的倒数第 N 个结点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
+### [19. 删除链表的倒数第 N 个节点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
 
 **题目**
 
-给你一个链表，删除链表的倒数第 `n` 个结点，并且返回链表的头结点。
+给你一个链表，删除链表的倒数第 `n` 个节点，并且返回链表的头节点。
 
 **示例**
 
@@ -342,17 +539,17 @@ function merge(list1, list2) {
 
 **思路**
 
-如果没有限制的话，一次遍历获取链表的长度，第二次遍历获取到倒数的第n个结点。
+如果没有限制的话，一次遍历获取链表的长度，第二次遍历获取到倒数的第n个节点。
 
 采用一次扫描。考虑使用双指针——快慢指针来解决问题。假定链表长度为k。
 
-1、倒数第n个结点，也就是`k - n + 1`的位置。
+1、倒数第n个节点，也就是`k - n + 1`的位置。
 
-2、快指针指向头结点，当快指针到n的位置时，慢指针开始移动。
+2、快指针指向头节点，当快指针到n的位置时，慢指针开始移动。
 
 3、此时快指针距离链表的尾部的距离时`k - n`，那么慢指针的和快指针保持同步的话，移动的距离也是`k - n`，它此时的位置就`k - n + 1`。
 
-4、删除当前结点，返回头结点就好。
+4、删除当前节点，返回头节点就好。
 
 **代码**
 
@@ -386,26 +583,26 @@ var removeNthFromEnd = function(head, n) {
         fast = fast.next
         slow = slow.next
     }
-    // 删除结点
+    // 删除节点
     pre.next = slow.next
     return head
 };
 ```
 
-### [876. 链表的中间结点](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
+### [876. 链表的中间节点](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
 
 **题目**
 
-给定一个头结点为 head 的非空单链表，返回链表的中间结点。
+给定一个头节点为 head 的非空单链表，返回链表的中间节点。
 
-如果有两个中间结点，则返回第二个中间结点。
+如果有两个中间节点，则返回第二个中间节点。
 
 **示例**
 
 ```
 输入：[1,2,3,4,5]
-输出：此列表中的结点 3 (序列化形式：[3,4,5])
-返回的结点值为 3 。 (测评系统对该结点序列化表述是 [3,4,5])。
+输出：此列表中的节点 3 (序列化形式：[3,4,5])
+返回的节点值为 3 。 (测评系统对该节点序列化表述是 [3,4,5])。
 注意，我们返回了一个 ListNode 类型的对象 ans，这样：
 ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, 以及 ans.next.next.next = NULL.
 ```
@@ -414,7 +611,7 @@ ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, 以及 ans.next.next.next 
 
 1、因为链表无法初始知道链表的长度，所以还是得看双指针
 
-2、快慢指针都指向head，当快指针走两步，慢指针走一步，当快指针走完之后，慢指针指向中间结点
+2、快慢指针都指向head，当快指针走两步，慢指针走一步，当快指针走完之后，慢指针指向中间节点
 
 **代码**
 
@@ -516,7 +713,7 @@ var hasCycle = function(head) {
 
 1、这题相比环形链表多了一个条件，需要找到环的起点。
 
-2、当第一次快慢指针相遇时，让其中一个结点指向头结点，然后让它们的速度相同，再次相遇的时候就是环的起点。
+2、当第一次快慢指针相遇时，让其中一个节点指向头节点，然后让它们的速度相同，再次相遇的时候就是环的起点。
 
 **代码**
 
@@ -702,9 +899,9 @@ var reverseBetween = function(head, left, right) {
     return head
 };
 
-// 创建一个后继结点
+// 创建一个后继节点
 let suc = new ListNode(null)
-// 反转前面的结点
+// 反转前面的节点
 function reversN(head, n) {
     if (n === 1) {
         suc = head.next
