@@ -18,7 +18,7 @@
 
 链表可以分为以下几种类型：
 
-- 单向链表（Singly Linked List）：每个节点只包含一个指向下一个节点的指针，最后一个节点指向null。
+- [单向链表（Singly Linked List）](https://github.com/guizimo/data-structures-javascript/blob/main/doc/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84JavaScript%E7%89%88%20%E4%B8%80%E3%80%91%E5%8D%95%E9%93%BE%E8%A1%A8.md)：每个节点只包含一个指向下一个节点的指针，最后一个节点指向null。
 - 双向链表（Doubly Linked List）：每个节点不仅包含一个指向下一个节点的指针，还包含一个指向上一个节点的指针，头节点的上一个节点指向null，尾节点的下一个节点也指向null。
 - 循环链表（Circular Linked List）：单向或双向链表的一种变体，链表中最后一个节点的指针不是指向null，而是指向链表的第一个节点。
 
