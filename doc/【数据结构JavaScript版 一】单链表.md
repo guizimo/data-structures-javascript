@@ -57,27 +57,7 @@
 
 明白了单链表的数据结构之后，来尝试构造一个单链表。
 
-### 思路
-
-1、定义一个节点的数据结构
-
-2、实现添加节点操作
-
-3、实现获取头节点操作
-
-4、实现获取链表的长度
-
-5、实现遍历节点的操作
-
-6、实现获取链表长度的操作
-
-7、实现查找节点的操作
-
-8、实现获取尾节点的操作
-
-9、实现删除节点的操作
-
-### 节点
+### 5.1、节点
 
 ```js
  /**
@@ -96,7 +76,7 @@ let length = 0
 let head = null
 ```
 
-### 添加节点
+### 5.2、添加节点
 
 **思路**
 
@@ -133,7 +113,7 @@ this.append = function (element) {
 }
 ```
 
-### 获取头节点
+### 5.3、获取头节点
 
 ```js
 /**
@@ -145,7 +125,7 @@ this.getHead = function(){
 }
 ```
 
-### 获取链表长度
+### 5.4、获取链表长度
 
 ```js
 /**
@@ -157,7 +137,7 @@ this.size = function() {
 }
 ```
 
-### 遍历节点
+### 5.5、遍历节点
 
 ```js
 /**
@@ -174,7 +154,7 @@ this.show = function() {
 }
 ```
 
-### 查找节点
+### 5.6、查找节点
 
 查找并返回给定节点element的索引值
 
@@ -198,7 +178,7 @@ this.indexOf = function(element) {
 }
 ```
 
-### 获取尾节点
+### 5.7、获取尾节点
 
 ```js
 this.getTail = function() {
@@ -213,7 +193,7 @@ this.getTail = function() {
 }
 ```
 
-### 插入节点
+### 5.8、插入节点
 
 ```javascript
 /**
@@ -253,7 +233,7 @@ this.insert = function (index, element) {
 }
 ```
 
-### 删除尾节点
+### 5.9、删除尾节点
 
 ```javascript
 /**
@@ -287,7 +267,7 @@ this.removeTail = function () {
 }
 ```
 
-### 删除指定的元素
+### 5.10、删除指定的元素
 
 ```javascript
 /**
@@ -322,7 +302,7 @@ this.removeByElement = function (element) {
 }
 ```
 
-### 删除指定的索引的元素
+### 5.11、删除指定的索引的元素
 
 ```javascript
 /**
@@ -359,23 +339,31 @@ this.removeByIndex = function (index) {
 }
 ```
 
-### 完整代码
+### 5.12、完整代码
 
+**代码**
 
+[single-linked-list.js](https://github.com/guizimo/data-structures-javascript/blob/main/code/linked-list/single-linked-list.js)
 
+**测试**
 
+[single-linked-list.test.js](https://github.com/guizimo/data-structures-javascript/blob/main/test/linked-list/single-linked-list.test.js)
 
-## 7、单链表必刷题库
+## 6、单链表必刷题库
 
-1、单链表用**双指针**解法
+### 6.1、解题思路
 
-2、**虚拟头节点**`dummy` 节点
+1、**双指针**解法
+
+2、**虚拟头节点**
 
 3、归并排序
 
 4、快慢指针
 
-### [21. 合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
+### 6.2、题集
+
+#### [21. 合并两个有序链表 ](https://leetcode-cn.com/problems/merge-two-sorted-lists/)【简单】
 
 这道题是链表的基本操作
 
@@ -399,6 +387,12 @@ this.removeByIndex = function (index) {
 3、后续会剩下一个未处理的，需要判断
 
 4、返回虚拟头节点的下一个节点
+
+**图解**
+
+[LeetCode题解](https://leetcode.cn/problems/merge-two-sorted-lists/solution/by-guizimo-ay6b/)
+
+![test](https://guizimo.oss-cn-shanghai.aliyuncs.com/img/test.gif)
 
 **代码**
 
@@ -439,7 +433,7 @@ var mergeTwoLists = function(list1, list2) {
 };
 ```
 
-### [23. 合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)
+#### [23. 合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)【困难】
 
 这是一个hard的题，从low到hard，看看题目变化了多少。
 
@@ -468,7 +462,7 @@ var mergeTwoLists = function(list1, list2) {
 
 这道题同上一道题目类似。甚至可以利用上一道题的解题思路。
 
-将k个最终转化为两个，可用用到归并排序。
+将k个最终转化为两个，可用用到**归并排序**。
 
 ```js
 /**
@@ -483,7 +477,6 @@ var mergeTwoLists = function(list1, list2) {
  * @return {ListNode}
  */
 var mergeKLists = function(lists) {
-    // 提前退出
     if (lists.length === 0) return null
     return mergeList(lists, 0, lists.length - 1)
 
@@ -522,7 +515,7 @@ function merge(list1, list2) {
 }
 ```
 
-### [19. 删除链表的倒数第 N 个节点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
+#### [19. 删除链表的倒数第 N 个节点【中等】](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
 
 **题目**
 
@@ -589,7 +582,7 @@ var removeNthFromEnd = function(head, n) {
 };
 ```
 
-### [876. 链表的中间节点](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
+#### [876. 链表的中间节点](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
 
 **题目**
 
@@ -637,7 +630,7 @@ var middleNode = function(head) {
 };
 ```
 
-### [141. 环形链表](https://leetcode-cn.com/problems/linked-list-cycle/)
+#### [141. 环形链表](https://leetcode-cn.com/problems/linked-list-cycle/)
 
 **题目**
 
@@ -691,7 +684,7 @@ var hasCycle = function(head) {
 };
 ```
 
-### [142. 环形链表 II](https://leetcode-cn.com/problems/linked-list-cycle-ii/)
+#### [142. 环形链表 II](https://leetcode-cn.com/problems/linked-list-cycle-ii/)
 
 **题目**
 
@@ -752,7 +745,7 @@ var detectCycle = function(head) {
 };
 ```
 
-### [160. 相交链表](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)
+#### [160. 相交链表](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)
 
 **题目**
 
@@ -810,7 +803,7 @@ var getIntersectionNode = function(headA, headB) {
 };
 ```
 
-### [206. 反转链表](https://leetcode-cn.com/problems/reverse-linked-list/)
+#### [206. 反转链表](https://leetcode-cn.com/problems/reverse-linked-list/)
 
 **题目**
 
@@ -854,7 +847,7 @@ var reverseList = function(head) {
 };
 ```
 
-### [92. 反转链表 II](https://leetcode-cn.com/problems/reverse-linked-list-ii/)
+#### [92. 反转链表 II](https://leetcode-cn.com/problems/reverse-linked-list-ii/)
 
 **题目**
 
@@ -914,7 +907,7 @@ function reversN(head, n) {
 }
 ```
 
-### [25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)
+#### [25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)
 
 **题目**
 
