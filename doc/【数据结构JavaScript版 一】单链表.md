@@ -22,7 +22,7 @@
 
 首先来看一张图，会比较直观。
 
-![节点结构](https://guizimo.oss-cn-shanghai.aliyuncs.com/img/image-20220402231702469.png)
+![节点结构](https://guizimo.oss-cn-shanghai.aliyuncs.com/img/image-20230518151410321.png)
 
 链表通过每个节点的链域将线性表的n个节点按其逻辑顺序链接在一起，每个节点只有一个链域的链表被称为单链表（Single Linked List）。
 
@@ -30,7 +30,7 @@
 
 单链表中每个节点的存储地址是存放在其前趋节点next域中，而开始节点无前趋，故应设头指针head指向开始节点。
 
-![单链表的头指针head和终端节点](https://guizimo.oss-cn-shanghai.aliyuncs.com/img/image-20220402232222020.png)
+![image-20230518161648420](https://guizimo.oss-cn-shanghai.aliyuncs.com/img/image-20230518161648420.png)
 
 链表由头指针唯一确定，单链表可以用头指针的名字来命名。
 

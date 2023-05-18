@@ -6,11 +6,11 @@
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /data-structures-javascript/code/circular-double-linked-list.js
  */
-const CircularDoubleLinkedList = function() {
-    
+function CircularDoubleLinkedList() {
+
     /**
      * 结点定义
-     * @param {*} element 
+     * @param {*} element
      */
     const Node = function(element) {
         // 结点元素
@@ -30,7 +30,7 @@ const CircularDoubleLinkedList = function() {
 
     /**
      * 获取链表的长度
-     * @returns 
+     * @returns
      */
     this.size = function() {
         return length
@@ -38,7 +38,7 @@ const CircularDoubleLinkedList = function() {
 
     /**
      * 获取尾结点
-     * @returns 
+     * @returns
      */
     this.getTail = function() {
         return tail
@@ -46,7 +46,7 @@ const CircularDoubleLinkedList = function() {
 
     /**
      * 获取头结点
-     * @returns 
+     * @returns
      */
     this.getHead = function() {
         return head
@@ -54,7 +54,7 @@ const CircularDoubleLinkedList = function() {
 
     /**
      * 判断链表是否为空
-     * @returns 
+     * @returns
      */
     this.isEmpty = function() {
         return length === 0
@@ -62,8 +62,8 @@ const CircularDoubleLinkedList = function() {
 
     /**
      * 追加结点
-     * @param {*} element 
-     * @returns 
+     * @param {*} element
+     * @returns
      */
     this.append = function(element) {
         let node = new Node(element), cur, pre
@@ -86,7 +86,7 @@ const CircularDoubleLinkedList = function() {
 
     /**
      * 遍历结点
-     * @returns 
+     * @returns
      */
     this.show = function() {
         let cur = head, res = []
@@ -99,9 +99,9 @@ const CircularDoubleLinkedList = function() {
 
     /**
      * 插入结点
-     * @param {*} index 
-     * @param {*} element 
-     * @returns 
+     * @param {*} index
+     * @param {*} element
+     * @returns
      */
     this.insert = function(index, element) {
         let cur = head, num = 0, node = new Node(element)
