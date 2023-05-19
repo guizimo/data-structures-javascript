@@ -61,18 +61,18 @@
 
 ```js
  /**
- * 结点定义
+ * 节点定义
  */
 const Node = function (element) {
-    // 结点内容
+    // 节点内容
     this.element = element
-    // 结点指针
+    // 节点指针
     this.next = null
 }
 
 // 链表长度
 let length = 0
-// 链表头结点
+// 链表头节点
 let head = null
 ```
 
@@ -90,13 +90,13 @@ let head = null
 
 ```js
 /**
- * 追加结点
- * @description 给链表添加结点
+ * 追加节点
+ * @description 给链表添加节点
  * @param {*} element
  * @returns
  */
 this.append = function (element) {
-    // 转化为结点结构
+    // 转化为节点结构
     let node = new Node(element)
     let cur = null
     if (!head) {
@@ -197,8 +197,8 @@ this.getTail = function() {
 
 ```javascript
 /**
- * 插入结点
- * 根据指定的索引插入结点
+ * 插入节点
+ * 根据指定的索引插入节点
  * @param {*} index
  * @param {*} element
  * @returns
@@ -237,7 +237,7 @@ this.insert = function (index, element) {
 
 ```javascript
 /**
- * 删除尾结点
+ * 删除尾节点
  * @returns
  */
 this.removeTail = function () {

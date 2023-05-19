@@ -32,17 +32,17 @@
 
 
 
-4、构造一个单链表的数据结构
+## 4、构造一个单链表的数据结构
 
-### 4.1、结点
+### 4.1、节点
 
 ```javascript
 /**
- * 结点定义
+ * 节点定义
  * @param {*} element
  */
 const Node = function(element) {
-    // 结点元素
+    // 节点元素
     this.element = element
     // 后继指针
     this.next = null
@@ -52,17 +52,17 @@ const Node = function(element) {
 
 // 链表长度
 let length = 0
-// 头结点
+// 头节点
 let head = null
-// 尾结点
+// 尾节点
 let tail = null
 ```
 
-4.2、追加结点
+### 4.2、追加节点
 
 ```javascript
 /**
- * 追加结点
+ * 追加节点
  * @param {*} element
  * @returns
  */
@@ -86,9 +86,7 @@ this.append = function(element) {
 }
 ```
 
-
-
-4.2、获取链表的长度
+### 4.3、获取链表的长度
 
 ```javascript
 /**
@@ -100,13 +98,11 @@ this.size = function() {
 }
 ```
 
-
-
-4.2、获取尾结点
+### 4.4、获取尾节点
 
 ```javascript
 /**
- * 获取尾结点
+ * 获取尾节点
  * @returns
  */
 this.getTail = function() {
@@ -114,13 +110,11 @@ this.getTail = function() {
 }
 ```
 
-
-
-4.2、获取头结点
+### 4.5、获取头节点
 
 ```javascript
 /**
- * 获取头结点
+ * 获取头节点
  * @returns
  */
 this.getHead = function() {
@@ -144,11 +138,11 @@ this.isEmpty = function() {
 
 
 
-4.2、遍历结点
+4.2、遍历节点
 
 ```javascript
 /**
- * 遍历结点
+ * 遍历节点
  * @returns
  */
 this.show = function() {
@@ -165,11 +159,11 @@ this.show = function() {
 
 
 
-4.2、插入结点
+4.2、插入节点
 
 ```javascript
 /**
- * 插入结点
+ * 插入节点
  * @param {*} index
  * @param {*} element
  * @returns
@@ -181,7 +175,7 @@ this.insert = function(index, element) {
         console.error('index error')
         return false
     }
-    // 判断是否尾结点
+    // 判断是否尾节点
     if (index === length - 1) {
         node.prev = tail.prev
         node.next = tail
@@ -207,7 +201,7 @@ this.insert = function(index, element) {
 
 
 
-4.2、遍历结点
+4.2、遍历节点
 
 ```javascript
 this.indexOf = function(index) {
@@ -227,11 +221,11 @@ this.indexOf = function(index) {
 
 
 
-4.2、遍历结点
+4.2、遍历节点
 
 ```javascript
 /**
- * 遍历结点
+ * 遍历节点
  * @returns
  */
 this.show = function() {
@@ -248,11 +242,11 @@ this.show = function() {
 
 
 
-4.2、遍历结点
+4.2、遍历节点
 
 ```javascript
 /**
- * 遍历结点
+ * 遍历节点
  * @returns
  */
 this.show = function() {

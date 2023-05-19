@@ -1,10 +1,10 @@
 function DoubleLinkedList() {
     /**
-     * 结点定义
+     * 节点定义
      * @param {*} element
      */
     const Node = function(element) {
-        // 结点元素
+        // 节点元素
         this.element = element
         // 后继指针
         this.next = null
@@ -14,9 +14,9 @@ function DoubleLinkedList() {
 
     // 链表长度
     let length = 0
-    // 头结点
+    // 头节点
     let head = null
-    // 尾结点
+    // 尾节点
     let tail = null
 
     /**
@@ -28,7 +28,7 @@ function DoubleLinkedList() {
     }
 
     /**
-     * 获取尾结点
+     * 获取尾节点
      * @returns
      */
     this.getTail = function() {
@@ -36,7 +36,7 @@ function DoubleLinkedList() {
     }
 
     /**
-     * 获取头结点
+     * 获取头节点
      * @returns
      */
     this.getHead = function() {
@@ -52,7 +52,7 @@ function DoubleLinkedList() {
     }
 
     /**
-     * 追加结点
+     * 追加节点
      * @param {*} element
      * @returns
      */
@@ -70,13 +70,14 @@ function DoubleLinkedList() {
             pre.next = node
             node.prev = pre
         }
+        // 更新尾节点
         tail = node
         length++
         return true
     }
 
     /**
-     * 遍历结点
+     * 遍历节点
      * @returns
      */
     this.show = function() {
@@ -89,7 +90,20 @@ function DoubleLinkedList() {
     }
 
     /**
-     * 插入结点
+     * 遍历节点（以尾节点遍历）
+     * @returns
+     */
+    this.showByTail = function() {
+        let cur = tail, res = []
+        while(cur) {
+            res.push(cur.element)
+            cur = cur.prev
+        }
+        return res
+    }
+
+    /**
+     * 插入节点
      * @param {*} index
      * @param {*} element
      * @returns
@@ -101,11 +115,17 @@ function DoubleLinkedList() {
             console.error('index error')
             return false
         }
-        // 判断是否尾结点
+        // 判断是否尾节点
         if (index === length - 1) {
             node.prev = tail.prev
             node.next = tail
-            tail.pre = node
+            tail.prev.next = node
+            tail.prev = node
+        } else if (index === 0) { // 判断是否头节点
+            node.next = cur
+            cur.prev = node
+            // 更新头节点
+            head = node
         } else {
             while (cur) {
                 if (num === index) {
@@ -150,8 +170,39 @@ function DoubleLinkedList() {
             console.error('tail is null')
             return false
         }
-        let pre = tail.pre
-        pre.next = null
+        if (length === 1) { // 最后一个节点
+            head = null
+            tail = null
+            length = 0
+            return true
+        }
+        let prev = tail.prev
+        prev.next = null
+        // 更新尾节点
+        tail = prev
+        length--
+        return true
+    }
+
+    /**
+     * 移除尾节点
+     * @returns {boolean}
+     */
+    this.removeHead = function() {
+        if (!head) {
+            console.error('head is null')
+            return false
+        }
+        if (length === 1) { // 最后一个节点
+            head = null
+            tail = null
+            length = 0
+            return true
+        }
+        let next = head.next
+        next.prev = null
+        // 更新尾节点
+        head = next
         length--
         return true
     }
@@ -166,15 +217,28 @@ function DoubleLinkedList() {
             console.error('head is null')
             return false
         }
-        let cur = head, num = 0, pre
-        while(num < index) {
-            num++
-            cur = cur.next
+        // 检查index
+        if (index > length - 1 || index < 0) {
+            console.error('index error')
+            return false
         }
-        pre = cur.prev
-        pre.next = cur.next
-        length--
-        return true
+        let cur = head, num = 0, prev, next
+        if (index === 0) {
+            return this.removeHead()
+        } else if (index === length - 1) {
+            return this.removeTail()
+        } else {
+            while(num < index) {
+                cur = cur.next
+                num++
+            }
+            prev = cur.prev
+            next = cur.next
+            prev.next = cur.next
+            next.prev = prev
+            length--
+            return true
+        }
     }
 
     /**
@@ -182,14 +246,23 @@ function DoubleLinkedList() {
      * @param element
      */
     this.removeByElement = function(element) {
-
+        if (!head) {
+            console.error('head is null')
+            return false
+        }
+        let cur = head, num = 0, prev, next
+        if (head.element === element) {
+            this.removeHead()
+        } else  {
+            while (cur) {
+                if (cur.element === element) {
+                    return this.removeByIndex(num)
+                }
+                cur = cur.next
+                num++
+            }
+        }
+        return false
     }
-
-
 }
 
-let doubleLinkedList = new DoubleLinkedList()
-
-doubleLinkedList.append('1')
-doubleLinkedList.append('2')
-doubleLinkedList.append('3')

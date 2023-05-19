@@ -2,24 +2,20 @@
 function CircularSingleLinkedList() {
 
     /**
-     * 结点定义
+     * 节点定义
      * @param {*} element
      */
     const Node = function(element) {
-        // 结点元素
+        // 节点元素
         this.element = element
         // 后继指针
         this.next = null
-        // 前驱指针
-        this.prev = null
     }
 
     // 链表长度
     let length = 0
-    // 头结点
+    // 头节点
     let head = null
-    // 尾结点
-    let tail = null
 
     /**
      * 获取链表的长度
@@ -30,7 +26,7 @@ function CircularSingleLinkedList() {
     }
 
     /**
-     * 获取尾结点
+     * 获取尾节点
      * @returns
      */
     this.getTail = function() {
@@ -38,7 +34,7 @@ function CircularSingleLinkedList() {
     }
 
     /**
-     * 获取头结点
+     * 获取头节点
      * @returns
      */
     this.getHead = function() {
@@ -54,7 +50,7 @@ function CircularSingleLinkedList() {
     }
 
     /**
-     * 追加结点
+     * 追加节点
      * @param {*} element
      * @returns
      */
@@ -78,7 +74,7 @@ function CircularSingleLinkedList() {
     }
 
     /**
-     * 遍历结点
+     * 遍历节点
      * @returns
      */
     this.show = function() {
@@ -91,7 +87,7 @@ function CircularSingleLinkedList() {
     }
 
     /**
-     * 插入结点
+     * 插入节点
      * @param {*} index
      * @param {*} element
      * @returns
@@ -103,7 +99,7 @@ function CircularSingleLinkedList() {
             console.error('index error')
             return false
         }
-        // 判断是否尾结点
+        // 判断是否尾节点
         if (index === length - 1) {
             node.prev = tail.prev
             node.next = tail

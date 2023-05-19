@@ -19,10 +19,10 @@ singleLinkedList.isEmpty()
 // 获取链表的长度
 singleLinkedList.size()
 
-// 获取头结点
+// 获取头节点
 singleLinkedList.getHead()
 
-// 获取尾结点
+// 获取尾节点
 singleLinkedList.getTail()
 
 // 插入节点
@@ -31,7 +31,7 @@ singleLinkedList.insert(1, '5')
 // 根据索引查找链表的元素
 singleLinkedList.indexOf(2)
 
-// 删除尾结点
+// 删除尾节点
 singleLinkedList.removeTail()
 
 // 根据索引值删除指定的元素
