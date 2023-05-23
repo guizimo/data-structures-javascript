@@ -155,6 +155,11 @@ function SingleLinkedList() {
             console.error('head is null')
             return false
         }
+        if (length === 1) { // 最后一个节点
+            head = null
+            length = 0
+            return true
+        }
         let cur = head,
             pre = null,
             num = 0

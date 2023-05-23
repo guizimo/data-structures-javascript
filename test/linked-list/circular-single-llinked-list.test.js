@@ -5,7 +5,6 @@ circularSingleLinkedList.append('2')
 circularSingleLinkedList.append('3')
 
 circularSingleLinkedList.show()
-circularSingleLinkedList.showByTail()
 
 
 circularSingleLinkedList.size()
