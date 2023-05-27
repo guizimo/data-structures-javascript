@@ -34,6 +34,9 @@ singleLinkedList.indexOf(2)
 // 删除尾节点
 singleLinkedList.removeTail()
 
+// 删除头节点节点
+singleLinkedList.removeHead()
+
 // 根据索引值删除指定的元素
 singleLinkedList.removeByIndex(2)
 

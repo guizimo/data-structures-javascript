@@ -121,6 +121,11 @@ function CircularSingleLinkedList() {
         return true
     }
 
+    /**
+     * 查找节点
+     * @param index
+     * @returns {number|null}
+     */
     this.indexOf = function(index) {
         let cur = head, num = 0
         while(num < length) {
@@ -133,6 +138,10 @@ function CircularSingleLinkedList() {
         return -1
     }
 
+    /**
+     * 移除尾节点
+     * @returns {boolean}
+     */
     this.removeTail = function() {
         if (!tail) {
             console.error('tail is null')
@@ -144,34 +153,73 @@ function CircularSingleLinkedList() {
             length = 0
             return true
         }
-        let cur = head, num = 0
-        while (num < length) {
+        let cur = head, num = 0, pre
+        while (num < length - 1) { // 遍历到最后一个的前一个
+            pre = cur
             cur = cur.next
             num++
         }
-        let pre = tail.pre
-        pre.next = null
-
+        tail = pre
+        tail.next = head
         length--
         return true
     }
 
+    /**
+     * 移除头节点
+     * @returns {boolean}
+     */
+    this.removeHead = function() {
+        if (!head) {
+            console.error('head is null')
+            return false
+        }
+        if (length === 1) { // 最后一个节点
+            head = null
+            tail = null
+            length = 0
+            return true
+        }
+        head = head.next
+        length--
+        return true
+    }
+
+    /**
+     * 通过index移除节点
+     * @param index
+     * @returns {boolean}
+     */
     this.removeByIndex = function(index) {
+        // 检查index
+        if (index > length - 1 || index < 0) {
+            console.error('index error')
+            return false
+        }
         if (!head) {
             console.error('head is null')
             return false
         }
         let cur = head, num = 0, pre
-        while(num < index) {
-            num++
-            cur = cur.next
+        if (index === 0) {
+
+        } else {
+            while(num < index) {
+                num++
+                cur = cur.next
+            }
         }
+
         pre = cur.prev
         pre.next = cur.next
         length--
         return true
     }
 
+    /**
+     * 通过元素移除节点
+     * @param element
+     */
     this.removeByElement = function(element) {
 
     }

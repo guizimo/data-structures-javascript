@@ -182,6 +182,25 @@ function SingleLinkedList() {
     }
 
     /**
+     * 删除头节点
+     * @returns
+     */
+    this.removeHead = function () {
+        if (!head) {
+            console.error('head is null')
+            return false
+        }
+        if (length === 1) { // 最后一个节点
+            head = null
+            length = 0
+            return true
+        }
+        head = head.next
+        length--
+        return true
+    }
+
+    /**
      * 删除指定的元素
      * 根据传入的元素删除链表中的元素
      * @param {*} element
@@ -229,6 +248,8 @@ function SingleLinkedList() {
             num = 0
         if (index === 0) {
             head = cur.next
+        } else if (index === length - 1) {
+            return this.removeTail()
         } else {
             while (cur) {
                 if (num === index) {
