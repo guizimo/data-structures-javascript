@@ -1,4 +1,3 @@
-
 function CircularSingleLinkedList() {
 
     /**
@@ -72,6 +71,26 @@ function CircularSingleLinkedList() {
     }
 
     /**
+     * 首部追加节点
+     * @param {*} element
+     * @returns
+     */
+    this.prepend = function(element) {
+        let node = new Node(element)
+        if (!head) {
+            head = node
+            tail = node
+            tail.next = head
+        } else {
+            node.next = head
+            head = node
+            tail.next = head
+        }
+        length++
+        return true
+    }
+
+    /**
      * 遍历节点
      * @returns
      */
@@ -94,15 +113,13 @@ function CircularSingleLinkedList() {
     this.insert = function(index, element) {
         let cur = head, prev, num = 0, node = new Node(element)
         // 检查index
-        if (index > length || index < 0) {
+        if (index > length - 1 || index < 0) {
             console.error('index error')
             return false
         }
         if (index === 0) {
-            node.next = cur
-            head = node
-            tail.next = head
-        } else if (index === length) {
+            return this.prepend(element)
+        } else if (index === length - 1) {
             return this.append(element)
         } else {
             while (num < length) {
@@ -117,8 +134,7 @@ function CircularSingleLinkedList() {
                 cur = cur.next
             }
         }
-        length++
-        return true
+        return false
     }
 
     /**
@@ -200,18 +216,18 @@ function CircularSingleLinkedList() {
             console.error('head is null')
             return false
         }
-        let cur = head, num = 0, pre
+        let cur = head, num = 0
         if (index === 0) {
-
+            return this.removeHead()
+        } else if (index === length - 1) {
+            return this.removeTail()
         } else {
-            while(num < index) {
+            while(num < index - 1) { // 找到前驱节点
                 num++
                 cur = cur.next
             }
         }
-
-        pre = cur.prev
-        pre.next = cur.next
+        cur.next = cur.next.next
         length--
         return true
     }
@@ -221,8 +237,22 @@ function CircularSingleLinkedList() {
      * @param element
      */
     this.removeByElement = function(element) {
-
+        // 检查index
+        if (element === '') {
+            console.error('element is not empty')
+            return false
+        }
+        let num = 0, cur = head
+        while (num < length) {
+            if (cur.element === element) {
+                return this.removeByIndex(num)
+            } else {
+                cur = cur.next
+                num++
+            }
+        }
+        console.error('not find')
+        return false
     }
-
 
 }

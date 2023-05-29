@@ -1,6 +1,3 @@
-/**
- * 单链表
- */
 function SingleLinkedList() {
     /**
      * 节点定义
@@ -142,8 +139,7 @@ function SingleLinkedList() {
                 cur = cur.next
             }
         }
-        length++
-        return true
+        return false
     }
 
     /**

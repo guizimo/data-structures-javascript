@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2022-04-26 16:41:11
- * @LastEditTime: 2022-04-27 17:53:02
- * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /data-structures-javascript/code/circular-double-linked-list.js
- */
 function CircularDoubleLinkedList() {
 
     /**
@@ -66,20 +58,38 @@ function CircularDoubleLinkedList() {
      * @returns
      */
     this.append = function(element) {
-        let node = new Node(element), cur, pre
+        let node = new Node(element)
         if (!head) {
             head = node
+            tail = node
         } else {
-            cur = head
-            while(cur) {
-                pre = cur
-                cur = cur.next
-            }
-            node.next = cur
-            pre.next = node
-            node.prev = pre
+            node.prev = tail
+            tail.next = node
+            tail = node
         }
-        tail = node
+        tail.next = head
+        head.prev = tail
+        length++
+        return true
+    }
+
+    /**
+     * 首部追加节点
+     * @param {*} element
+     * @returns
+     */
+    this.prepend = function(element) {
+        let node = new Node(element)
+        if (!head) {
+            head = node
+            tail = node
+        } else {
+            node.next = head
+            head.prev = node
+            head = node
+        }
+        tail.next = head
+        head.prev = tail
         length++
         return true
     }
@@ -89,10 +99,25 @@ function CircularDoubleLinkedList() {
      * @returns
      */
     this.show = function() {
-        let cur = head, res = []
-        while(cur) {
+        let cur = head, num = 0, res = []
+        while(num < length) {
             res.push(cur.element)
             cur = cur.next
+            num++
+        }
+        return res
+    }
+
+    /**
+     * 向后遍历链表
+     * @returns
+     */
+    this.showByTail = function() {
+        let cur = tail, num = 0, res = []
+        while(num < length) {
+            res.push(cur.element)
+            cur = cur.prev
+            num++
         }
         return res
     }
@@ -112,30 +137,34 @@ function CircularDoubleLinkedList() {
         }
         // 判断是否尾节点
         if (index === length - 1) {
-            node.prev = tail.prev
-            node.next = tail
-            tail.pre = node
+            return this.append(element)
+        } else if (index === 0) {
+           return this.prepend(element)
         } else {
-            while (cur) {
+            while (num < length) {
                 if (num === index) {
-                    node.next = cur
                     node.prev = cur.prev
+                    node.next = cur
                     cur.prev.next = node
                     cur.prev = node
                     length++
                     return true
                 }
-                num++
                 cur = cur.next
+                num++
             }
         }
-        length++
-        return true
+        return false
     }
 
+    /**
+     * 查找节点
+     * @param index
+     * @returns {number|null}
+     */
     this.indexOf = function(index) {
         let cur = head, num = 0
-        while(cur) {
+        while(num < length) {
             if (num === index) {
                 return cur
             }
@@ -145,35 +174,105 @@ function CircularDoubleLinkedList() {
         return -1
     }
 
+    /**
+     * 移除尾节点
+     * @returns {boolean}
+     */
     this.removeTail = function() {
         if (!tail) {
             console.error('tail is null')
             return false
         }
-        let pre = tail.pre
-        pre.next = null
+        if (length === 1) { // 最后一个节点
+            head = null
+            tail = null
+            length = 0
+            return true
+        }
+        tail = tail.prev
+        tail.next = head
         length--
         return true
     }
 
-    this.removeByIndex = function(index) {
+    /**
+     * 移除头节点
+     * @returns {boolean}
+     */
+    this.removeHead = function() {
         if (!head) {
             console.error('head is null')
             return false
         }
-        let cur = head, num = 0, pre
-        while(num < index) {
-            num++
-            cur = cur.next
+        if (length === 1) { // 最后一个节点
+            head = null
+            tail = null
+            length = 0
+            return true
         }
-        pre = cur.prev
-        pre.next = cur.next
+        head = head.next
+        head.prev = tail
         length--
         return true
     }
 
-    this.removeByElement = function(element) {
+    /**
+     * 通过index移除节点
+     * @param index
+     * @returns {boolean}
+     */
+    this.removeByIndex = function(index) {
+        // 检查index
+        if (index > length - 1 || index < 0) {
+            console.error('index error')
+            return false
+        }
+        if (!head) {
+            console.error('head is null')
+            return false
+        }
+        let cur = head, num = 0
+        if (index === 0) {
+            return this.removeHead()
+        } else if (index === length - 1) {
+            return this.removeTail()
+        } else {
+            while(num < length) {
+                if (num === index) {
+                    const pre = cur.prev
+                    cur.prev.next = cur.next
+                    cur.next.prev = pre
+                    length--
+                    return true
+                }
+                num++
+                cur = cur.next
+            }
+        }
+        return false
+    }
 
+    /**
+     * 通过元素移除节点
+     * @param element
+     */
+    this.removeByElement = function(element) {
+        // 检查index
+        if (element === '') {
+            console.error('element is not empty')
+            return false
+        }
+        let num = 0, cur = head
+        while (num < length) {
+            if (cur.element === element) {
+                return this.removeByIndex(num)
+            } else {
+                cur = cur.next
+                num++
+            }
+        }
+        console.error('not find')
+        return false
     }
 
 

@@ -1,12 +1,14 @@
+![数据结构JavaScript 版](https://guizimo.oss-cn-shanghai.aliyuncs.com/img/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84JavaScript%20%E7%89%88.png)
+
 ## 介绍
 
-当我们谈到前端开发时，很容易把它与浏览器中的HTML、CSS和JavaScript混为一谈。然而，前端开发不仅仅是关于构建网页和应用程序的外观和交互，它也涉及到处理和管理数据。因此，了解和掌握前端中常用的数据结构是非常重要的。
+当我们谈到前端开发时，很容易把它与浏览器中的`HTML`、`CSS`和`JavaScript`混为一谈。然而，前端开发不仅仅是关于构建网页和应用程序的外观和交互，它也涉及到处理和管理数据。因此，了解和掌握前端中常用的数据结构是非常重要的。
 
 前端开发人员需要使用数据结构来解决各种算法和数据处理问题，例如搜索、排序、遍历、过滤和分组数据等。不同的数据结构适用于不同的场景，因此选择正确的数据结构是非常关键的。
 
-在本文中，我们将介绍前端中常用的数据结构，包括链表、数组、栈、队列、树、图和哈希表。我们将讨论每种数据结构的特点、应用场景以及如何使用它们来解决问题。
+在这个系列的文章中，将介绍前端中常用的数据结构，包括**链表**、**数组**、**栈**、**队列**、**树**、**图**和**哈希表**。一起讨论每种数据结构的特点、应用场景以及如何使用它们来解决问题。
 
-掌握前端中常用的数据结构不仅有助于优化代码和提高性能，还可以帮助我们更好地理解算法和数据处理的基本原理。无论你是初学者还是有经验的开发人员，本文都将为你提供有益的知识和技巧。
+掌握前端中常用的数据结构不仅有助于优化代码和提高性能，还可以帮助我们更好地理解算法和数据处理的基本原理。无论你是初学者还是有经验的开发人员，本系列文章都将为你提供有益的知识和技巧。
 
 ## 目录
 
@@ -19,16 +21,16 @@
 链表可以分为以下几种类型：
 
 - [单向链表（Singly Linked List）](https://github.com/guizimo/data-structures-javascript/blob/main/doc/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84JavaScript%E7%89%88%20%E4%B8%80%E3%80%91%E5%8D%95%E9%93%BE%E8%A1%A8.md)：每个节点只包含一个指向下一个节点的指针，最后一个节点指向null。
-- 双向链表（Doubly Linked List）：每个节点不仅包含一个指向下一个节点的指针，还包含一个指向上一个节点的指针，头节点的上一个节点指向null，尾节点的下一个节点也指向null。
-- 循环链表（Circular Linked List）：单向或双向链表的一种变体，链表中最后一个节点的指针不是指向null，而是指向链表的第一个节点。
+- [双向链表（Doubly Linked List）](https://github.com/guizimo/data-structures-javascript/blob/main/doc/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84JavaScript%E7%89%88%20%E4%BA%8C%E3%80%91%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8.md)：每个节点不仅包含一个指向下一个节点的指针，还包含一个指向上一个节点的指针，头节点的上一个节点指向null，尾节点的下一个节点也指向null。
+- 循环链表（Circular Linked List）：单向（[单向循环链表](https://github.com/guizimo/data-structures-javascript/blob/main/doc/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84JavaScript%E7%89%88%20%E4%B8%89%E3%80%91%E5%8D%95%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8.md)）或双向链表（[双向循环链表](https://github.com/guizimo/data-structures-javascript/blob/main/doc/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84JavaScript%E7%89%88%20%E5%9B%9B%E3%80%91%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8.md)）的一种变体，链表中最后一个节点的指针不是指向null，而是指向链表的第一个节点。
 
 ### 2、栈（Stack）
 
-一种后进先出（Last In First Out，LIFO）的数据结构，只允许在栈顶进行插入和删除操作。
+一种后进先出（Last In First Out，LIFO）的数据结构，**只允许在栈顶进行插入和删除操作**。
 
 ### 3、队列（Queue）
 
-一种先进先出（First In First Out，FIFO）的数据结构，只允许在队尾插入元素，在队头删除元素。
+一种先进先出（First In First Out，FIFO）的数据结构，**只允许在队尾插入元素，在队头删除元素**。
 
 ### 4、数组（Array）
 

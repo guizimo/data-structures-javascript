@@ -5,6 +5,9 @@ circularSingleLinkedList.append('1')
 circularSingleLinkedList.append('2')
 circularSingleLinkedList.append('3')
 
+// 在链表头部追加元素
+circularSingleLinkedList.prepend('0')
+
 // 遍历链表
 circularSingleLinkedList.show()
 
@@ -36,6 +39,6 @@ circularSingleLinkedList.removeHead()
 circularSingleLinkedList.removeByIndex(2)
 
 // 根据传入的元素删除指定的元素
-circularSingleLinkedList.removeByElement(2)
+circularSingleLinkedList.removeByElement('2')
 
 
