@@ -69,6 +69,7 @@ function LinkedStack() {
   this.pop = function () {
     if (length === 0) {
       console.error('stack empty')
+      return
     }
     let res, cur = head, pre
     if (length === 1) {
@@ -94,6 +95,7 @@ function LinkedStack() {
   this.peek = function () {
     if (length === 0) {
       console.error('stack empty')
+      return
     }
     let cur = head
     while (cur.next) {
