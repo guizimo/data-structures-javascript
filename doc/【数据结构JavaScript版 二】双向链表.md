@@ -279,5 +279,9 @@ this.isEmpty = function() {
 
 
 
-必刷
+## 必刷题
+
+#### [剑指 Offer II 028. 展平多级双向链表](https://leetcode.cn/problems/Qv1Da2/)
+
+#### [剑指 Offer 36. 二叉搜索树与双向链表](https://leetcode.cn/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/)
 

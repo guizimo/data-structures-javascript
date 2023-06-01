@@ -349,7 +349,7 @@ this.removeByIndex = function (index) {
 
 ## 6、单链表必刷题库
 
-### 6.1、解题思路
+**思路**
 
 1、**双指针**解法
 
@@ -359,9 +359,9 @@ this.removeByIndex = function (index) {
 
 4、快慢指针
 
-### 6.2、题集
+### [707. 设计链表](https://leetcode.cn/problems/design-linked-list/)
 
-#### [21. 合并两个有序链表 ](https://leetcode-cn.com/problems/merge-two-sorted-lists/)【简单】
+### [21. 合并两个有序链表 ](https://leetcode-cn.com/problems/merge-two-sorted-lists/)【简单】
 
 这道题是链表的基本操作
 
@@ -431,9 +431,9 @@ var mergeTwoLists = function(list1, list2) {
 };
 ```
 
-#### [23. 合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)【困难】
+### [23. 合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)【困难】
 
-这是一个hard的题，从low到hard，看看题目变化了多少。
+这是一个`hard`的题，刚好可以看看从`low`到`hard`，看看题目变化了多少。
 
 **题目**
 
